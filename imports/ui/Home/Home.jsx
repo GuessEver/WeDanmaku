@@ -8,7 +8,7 @@ import {
   Card
 } from 'grommet'
 
-const HeaderImage = () => <Image src={`../../assets/A.png`} fit={`cover`}/>
+const HeaderImage = (props) => <Image src={`../../assets/A.png`} fit={`cover`}/>
 
 const test = () => {
   let arr = []

@@ -6,6 +6,7 @@ import 'grommet/grommet.min.css'
 
 import { RedirectAs404 } from './Error'
 import Home from './Home/Home'
+import Dashboard from './Dashboard/Dashboard'
 import Auth from './Auth/Auth'
 import Activity from './Activity/Activity'
 
@@ -17,6 +18,7 @@ export default class App extends React.Component {
       <GROMMET_APP>
         <Switch>
           <Route exact path={`/`} component={Home}/>
+          <Route exact path={`/dashboard`} component={Dashboard}/>
           <Route path={`/auth`} component={Auth}/>
           <Route path={`/activity`} component={Activity}/>
           <Route component={RedirectAs404}/>

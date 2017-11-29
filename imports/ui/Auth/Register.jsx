@@ -30,6 +30,7 @@ export default class Register extends React.Component {
       passwordConfirmation: this.state.passwordConfirmation
     }
     console.log(user)
+    this.props.history.push('login')
   }
   render () {
     return (
@@ -63,7 +64,7 @@ export default class Register extends React.Component {
             <Button fill primary label={`注册`} onClick={this.register}/>
           </Box>
         </Form>
-        <Anchor primary href={`login`} label={`已有账号？点此立即登录`}/>
+        <Anchor primary path={`login`} label={`已有账号？点此立即登录`}/>
       </div>
     )
   }

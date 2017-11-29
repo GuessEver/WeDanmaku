@@ -26,6 +26,7 @@ export default class Login extends React.Component {
       password: this.state.password
     }
     console.log(user)
+    this.props.history.push('/dashboard')
   }
   render () {
     return (
@@ -47,7 +48,7 @@ export default class Login extends React.Component {
             <Button fill primary label={`立即登录`} onClick={this.login}/>
           </Box>
         </Form>
-        <Anchor primary href={`register`} label={`还没有账号？点此立即注册`}/>
+        <Anchor primary path={`register`} label={`还没有账号？点此立即注册`}/>
       </div>
     )
   }
