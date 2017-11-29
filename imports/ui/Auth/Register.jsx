@@ -1,6 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Link } from 'react-router-dom'
 
 import {
   Box,
@@ -8,7 +7,8 @@ import {
   FormField,
   TextInput,
   PasswordInput,
-  Button
+  Button,
+  Anchor
 } from 'grommet'
 
 export default class Register extends React.Component {
@@ -32,7 +32,7 @@ export default class Register extends React.Component {
             <Button fill primary label={`注册`}/>
           </Box>
         </Form>
-        <Link to={`login`}>已有账号？点此立即登录</Link>
+        <Anchor primary href={`login`} label={`已有账号？点此立即登录`}/>
       </div>
     )
   }
