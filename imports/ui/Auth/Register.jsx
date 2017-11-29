@@ -12,24 +12,55 @@ import {
 } from 'grommet'
 
 export default class Register extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      username: '',
+      email: '',
+      password: '',
+      passwordConfirmation: ''
+    }
+    this.register = this.register.bind(this)
+  }
+  register () {
+    let user = {
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
+      passwordConfirmation: this.state.passwordConfirmation
+    }
+    console.log(user)
+  }
   render () {
     return (
       <div>
         <Form>
           <FormField label={`USERNAME`}>
-            <TextInput />
+            <TextInput
+              onDOMChange={e => this.setState({ username: e.target.value })}
+              value={this.state.username}
+            />
           </FormField>
           <FormField label={`EMAIL`}>
-            <TextInput />
+            <TextInput
+              onDOMChange={e => this.setState({ email: e.target.value })}
+              value={this.state.email}
+            />
           </FormField>
           <FormField label={`PASSWORD`}>
-            <PasswordInput />
+            <PasswordInput
+              onChange={e => this.setState({ password: e.target.value })}
+              value={this.state.password}
+            />
           </FormField>
-          <FormField label={`PASSWORD REPEAT`}>
-            <PasswordInput />
+          <FormField label={`PASSWORD CONFIRMATION`}>
+            <PasswordInput
+              onChange={e => this.setState({ passwordConfirmation: e.target.value })}
+              value={this.state.passwordConfirmation}
+            />
           </FormField>
           <Box pad={{'vertical': 'medium'}}>
-            <Button fill primary label={`注册`}/>
+            <Button fill primary label={`注册`} onClick={this.register}/>
           </Box>
         </Form>
         <Anchor primary href={`login`} label={`已有账号？点此立即登录`}/>

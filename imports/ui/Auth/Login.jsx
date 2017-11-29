@@ -12,18 +12,39 @@ import {
 } from 'grommet'
 
 export default class Login extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      username: '',
+      password: ''
+    }
+    this.login = this.login.bind(this)
+  }
+  login () {
+    let user = {
+      username: this.state.username,
+      password: this.state.password
+    }
+    console.log(user)
+  }
   render () {
     return (
       <div>
         <Form>
           <FormField label={`USERNAME`}>
-            <TextInput />
+            <TextInput
+              onDOMChange={e => this.setState({ username: e.target.value })}
+              value={this.state.username}
+            />
           </FormField>
           <FormField label={`PASSWORD`}>
-            <PasswordInput />
+            <PasswordInput
+              onChange={e => this.setState({ password: e.target.value })}
+              value={this.state.password}
+            />
           </FormField>
           <Box pad={{'vertical': 'medium'}}>
-            <Button fill primary label={`立即登录`}/>
+            <Button fill primary label={`立即登录`} onClick={this.login}/>
           </Box>
         </Form>
         <Anchor primary href={`register`} label={`还没有账号？点此立即注册`}/>
