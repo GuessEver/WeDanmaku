@@ -10,12 +10,12 @@ import Dashboard from './Dashboard/Dashboard'
 import Auth from './Auth/Auth'
 import Activity from './Activity/Activity'
 
-import { App as GROMMET_APP } from 'grommet'
+import { App as GrommetApp } from 'grommet'
 
 export default class App extends React.Component {
   render () {
     return (
-      <GROMMET_APP>
+      <GrommetApp>
         <Switch>
           <Route exact path={`/`} component={Home}/>
           <Route exact path={`/dashboard`} component={Dashboard}/>
@@ -23,7 +23,7 @@ export default class App extends React.Component {
           <Route path={`/activity`} component={Activity}/>
           <Route component={RedirectAs404}/>
         </Switch>
-      </GROMMET_APP>
+      </GrommetApp>
     )
   }
 }

@@ -61,7 +61,7 @@ export default class Register extends React.Component {
             />
           </FormField>
           <Box pad={{'vertical': 'medium'}}>
-            <Button fill primary label={`注册`} onClick={this.register}/>
+            <Button fill primary type={`submit`} label={`注册`} onClick={this.register}/>
           </Box>
         </Form>
         <Anchor primary path={`login`} label={`已有账号？点此立即登录`}/>

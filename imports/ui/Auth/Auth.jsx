@@ -6,11 +6,11 @@ import { RedirectAs404 } from '../Error'
 import Login from './Login'
 import Register from './Register'
 
-const renderRoutes = (base) => {
+const SubRoutes = (props) => {
   return (
     <Switch>
-      <Route exact path={`${base}/login`} component={Login}/>
-      <Route exact path={`${base}/register`} component={Register}/>
+      <Route exact path={`${props.base}/login`} component={Login}/>
+      <Route exact path={`${props.base}/register`} component={Register}/>
       <Route component={RedirectAs404}/>
     </Switch>
   )
@@ -30,7 +30,7 @@ export default class Auth extends React.Component {
           <Box colorIndex={`light-2`} pad={`medium`} align={`center`}>
             <Heading>WeDanmaku</Heading>
             <Label>最懂校园活动的互动系统</Label>
-            {renderRoutes(this.props.match.url)}
+            <SubRoutes base={this.props.match.url}/>
           </Box>
         </Box>
       </div>
