@@ -15,12 +15,12 @@ import { App as GrommetApp } from 'grommet'
 export default class App extends React.Component {
   render () {
     return (
-      <GrommetApp>
+      <GrommetApp style={{background: 'transparent'}}>
         <Switch>
-          <Route exact path={`/`} component={Home}/>
-          <Route exact path={`/dashboard`} component={Dashboard}/>
-          <Route path={`/auth`} component={Auth}/>
-          <Route path={`/activity`} component={Activity}/>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/dashboard" component={Dashboard}/>
+          <Route path="/auth" component={Auth}/>
+          <Route path="/activity" component={Activity}/>
           <Route component={RedirectAs404}/>
         </Switch>
       </GrommetApp>

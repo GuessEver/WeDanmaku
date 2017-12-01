@@ -32,23 +32,23 @@ export default class Login extends React.Component {
     return (
       <div>
         <Form>
-          <FormField label={`USERNAME`}>
+          <FormField label="USERNAME">
             <TextInput
               onDOMChange={e => this.setState({ username: e.target.value })}
               value={this.state.username}
             />
           </FormField>
-          <FormField label={`PASSWORD`}>
+          <FormField label="PASSWORD">
             <PasswordInput
               onChange={e => this.setState({ password: e.target.value })}
               value={this.state.password}
             />
           </FormField>
           <Box pad={{'vertical': 'medium'}}>
-            <Button fill primary type={`submit`} label={`立即登录`} onClick={this.login}/>
+            <Button fill primary type="submit" label="立即登录" onClick={this.login}/>
           </Box>
         </Form>
-        <Anchor primary path={`/auth/register`} label={`还没有账号？点此立即注册`}/>
+        <Anchor primary path="/auth/register" label="还没有账号？点此立即注册"/>
       </div>
     )
   }

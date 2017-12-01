@@ -36,35 +36,35 @@ export default class Register extends React.Component {
     return (
       <div>
         <Form>
-          <FormField label={`USERNAME`}>
+          <FormField label="USERNAME">
             <TextInput
               onDOMChange={e => this.setState({ username: e.target.value })}
               value={this.state.username}
             />
           </FormField>
-          <FormField label={`EMAIL`}>
+          <FormField label="EMAIL">
             <TextInput
               onDOMChange={e => this.setState({ email: e.target.value })}
               value={this.state.email}
             />
           </FormField>
-          <FormField label={`PASSWORD`}>
+          <FormField label="PASSWORD">
             <PasswordInput
               onChange={e => this.setState({ password: e.target.value })}
               value={this.state.password}
             />
           </FormField>
-          <FormField label={`PASSWORD CONFIRMATION`}>
+          <FormField label="PASSWORD CONFIRMATION">
             <PasswordInput
               onChange={e => this.setState({ passwordConfirmation: e.target.value })}
               value={this.state.passwordConfirmation}
             />
           </FormField>
           <Box pad={{'vertical': 'medium'}}>
-            <Button fill primary type={`submit`} label={`注册`} onClick={this.register}/>
+            <Button fill primary type="submit" label="注册" onClick={this.register}/>
           </Box>
         </Form>
-        <Anchor primary path={`/auth/login`} label={`已有账号？点此立即登录`}/>
+        <Anchor primary path="/auth/login" label="已有账号？点此立即登录"/>
       </div>
     )
   }
