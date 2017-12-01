@@ -6,22 +6,20 @@ import { RedirectAs404 } from '../Error'
 import ActivityList from './ActivityList'
 import ActivityItem from './ActivityItem'
 
-const SubRoutes = (props) => {
-  return (
-    <Switch>
-      <Route exact path={`${props.base}`} component={ActivityList}/>
-      <Route exact path={`${props.base}/:_id`} component={ActivityItem}/>
-      <Route component={RedirectAs404}/>
-    </Switch>
-  )
-}
-
-
 export default class Activity extends React.Component {
+  renderSubRoutes () {
+    return (
+      <Switch>
+        <Route exact path={`/activity`} component={ActivityList}/>
+        <Route exact path={`/activity/:_id`} component={ActivityItem}/>
+        <Route component={RedirectAs404}/>
+      </Switch>
+    )
+  }
   render () {
     return (
       <div>
-        <SubRoutes base={this.props.match.url}/>
+        {this.renderSubRoutes()}
       </div>
     )
   }

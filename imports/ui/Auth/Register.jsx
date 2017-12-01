@@ -64,7 +64,7 @@ export default class Register extends React.Component {
             <Button fill primary type={`submit`} label={`注册`} onClick={this.register}/>
           </Box>
         </Form>
-        <Anchor primary path={`login`} label={`已有账号？点此立即登录`}/>
+        <Anchor primary path={`/auth/login`} label={`已有账号？点此立即登录`}/>
       </div>
     )
   }

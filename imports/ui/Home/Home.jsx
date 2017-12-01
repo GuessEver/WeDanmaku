@@ -6,7 +6,6 @@ import {
   Image,
   Columns,
   Card,
-  Box,
   Section,
   Heading,
   Label,
