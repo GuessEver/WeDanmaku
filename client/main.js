@@ -3,8 +3,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
 
-import Error from '../imports/ui/Error'
-import App from '../imports/ui/App'
+import Error from '../imports/pages/Error'
+import App from '../imports/pages/App'
 
 Meteor.startup(() => {
   render((

@@ -17,7 +17,7 @@ import {
 const HeaderImage = () => <Image src="../../assets/A.png" fit="cover"/>
 const HeaderBar = () => <Hero background={<HeaderImage/>} size="small"/>
 
-const ServiceItem = (props) => {
+const ServiceItem = props => {
   let r = () => parseInt(Math.random()*256)
   let cardStyle = {
     backgroundColor: `rgba(${r()}, ${r()}, ${r()}, .3)`
@@ -50,7 +50,7 @@ const Services = () => {
     </Section>
   )
 }
-const ApplicationItem = (props) => {
+const ApplicationItem = props => {
   return (
     <Card>
       <Image src={props.img} fit="contain"/>

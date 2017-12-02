@@ -1,32 +1,39 @@
-import { Meteor } from 'meteor/meteor'
-import Activity from '../model/Activity'
+import Activity from '../classes/activity'
+import { HTTP } from 'meteor/cfs:http-methods'
+import uuid from 'uuid'
 
-if (Meteor.isServer) {
-  Meteor.publish('activity', () => Activity.find())
-}
-
-Meteor.methods({
-  'activity.create' (name, description) {
-    let activity = new Activity({
-      name, description
-    })
-    activity.validate()
-    activity.save()
-  },
-  'activity.update' (activityId, name, description) {
-    let activity = Activity.findOne(activityId)
-    activity.name = name
-    activity.description = description
-    activity.save()
-  },
-  'activity.start' (activityId) {
-    let activity = Activity.findOne(activityId)
-    activity.startedAt = new Date()
-    activity.save()
-  },
-  'activity.end' (activityId) {
-    let activity = Activity.findOne(activityId)
-    activity.endedAt = new Date()
-    activity.save()
+Activity.extend({
+  meteorMethods: {
+    create (name, description) {
+      this.name = name
+      this.description = description
+      this.token = uuid.v4()
+      return this.save()
+    },
+    update (name, description) {
+      this.name = name
+      this.description = description
+      return this.save()
+    },
+    resetToken () {
+      this.token = uuid.v4()
+      return this.save()
+    },
+    start () {
+      this.startedAt = new Date()
+      return this.save()
+    },
+    end () {
+      this.endedAt = new Date()
+      return this.save()
+    },
+    toggleAutoOnScreen () {
+      this.autoOnScreen = !this.autoOnScreen
+      return this.save()
+    },
+    toggleAutoOnDanmaku () {
+      this.autoOnDanmaku = !this.autoOnDanmaku
+      return this.save()
+    }
   }
 })

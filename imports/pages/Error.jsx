@@ -1,5 +1,4 @@
 import React from 'react'
-import { render } from 'react-dom'
 import { Redirect } from 'react-router-dom'
 
 export default class Error extends React.Component {
@@ -14,13 +13,17 @@ export default class Error extends React.Component {
   }
 }
 
-export const RedirectAs404 = ({ location }) => (
-  <Redirect to={{
-    ...location,
-    isError: true,
-    error: {
-      code: 404,
-      message: 'Not found'
-    }
-  }}/>
-)
+export class RedirectAs404 extends React.Component {
+  render () {
+    return (
+      <Redirect to={{
+        ...this.props.location,
+        isError: true,
+        error: {
+          code: 404,
+          message: 'Not found'
+        }
+      }}/>
+    )
+  }
+}

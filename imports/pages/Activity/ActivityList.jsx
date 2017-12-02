@@ -1,10 +1,9 @@
 import React from 'react'
-import { render } from 'react-dom'
 import { Meteor } from 'meteor/meteor'
-import { Tracker } from 'meteor/tracker'
-import { Activity } from '../../model/Activity'
+import { withTracker } from 'meteor/react-meteor-data'
+import Activity from '../../classes/activity'
 
-import { HeaderBar } from '../Dashboard/Dashboard'
+import HeaderBar from '../Dashboard/HeaderBar'
 import {
   Tiles,
   Tile,
@@ -21,34 +20,20 @@ export const ActivityListItem = (props) => {
     <Card
       thumbnail="/images/bg2.jpg"
       label={status}
-      heading={props.name + ''} headingStrong={false}
+      heading={props.name} headingStrong={false}
       description={props.description}
       link={<CardLink/>}
-    >{props.description}</Card>
+    />
   )
 }
 
-export default class ActivityList extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      activities: []
-    }
-    Meteor.subscribe('activity')
-  }
-  componentDidMount () {
-    Tracker.autorun(() => {
-      this.setState({
-        activities: Activity.find().fetch()
-      })
-    })
-  }
+class ActivityList extends React.Component {
   render () {
     return (
       <div>
         <HeaderBar title="活动列表"/>
         <Tiles>
-          {this.state.activities.map(o => (
+          {this.props.activities.map(o => (
             <Tile hoverStyle="border" key={o._id}>
               <ActivityListItem {...o}/>
             </Tile>
@@ -58,3 +43,10 @@ export default class ActivityList extends React.Component {
     )
   }
 }
+
+export default withTracker(props => {
+  Meteor.subscribe('activity')
+  return {
+    activities: Activity.find().fetch(),
+  }
+})(ActivityList)

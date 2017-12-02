@@ -1,5 +1,4 @@
 import React from 'react'
-import { render } from 'react-dom'
 
 import {
   Box,
@@ -20,7 +19,6 @@ export default class Register extends React.Component {
       password: '',
       passwordConfirmation: ''
     }
-    this.register = this.register.bind(this)
   }
   register () {
     let user = {
@@ -61,7 +59,7 @@ export default class Register extends React.Component {
             />
           </FormField>
           <Box pad={{'vertical': 'medium'}}>
-            <Button fill primary type="submit" label="注册" onClick={this.register}/>
+            <Button fill primary type="submit" label="注册" onClick={this.register.bind(this)}/>
           </Box>
         </Form>
         <Anchor primary path="/auth/login" label="已有账号？点此立即登录"/>
