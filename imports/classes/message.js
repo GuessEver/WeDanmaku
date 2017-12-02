@@ -1,5 +1,6 @@
 import { Class } from 'meteor/jagi:astronomy'
 import { Mongo } from 'meteor/mongo'
+import Activity from './activity'
 
 export const Message = new Mongo.Collection('message')
 
@@ -36,6 +37,11 @@ export default Class.create({
     onDanmaku: {
       type: Boolean,
       default: false
+    }
+  },
+  helpers: {
+    activity () {
+      return Activity.findOne(this.activityId)
     }
   },
   behaviors: {

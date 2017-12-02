@@ -20,11 +20,11 @@ import {
 
 const StatusBar = props => {
   if (props.endedAt) {
-    return <Notification message="活动已经结束，您不能修改任何数据" status="ok"/>
+    return <Notification message="活动已经结束" status="ok"/>
   } else if (props.startedAt) {
-    return <Notification message="活动正在进行，您将只能修改部分设置" status="warning"/>
+    return <Notification message="活动正在进行" status="warning"/>
   } else {
-    return <Notification message="活动还未开始，您可以修改活动设置"/>
+    return <Notification message="活动还未开始"/>
   }
 }
 
@@ -63,13 +63,13 @@ class ActivitySettings extends React.Component {
       <Columns masonry maxCount={3}>
         <Section pad="small" align="center">
           <Heading tag="h3">活动信息</Heading>
-          <FormField label="活动标题">
+          <FormField label="活动标题（不超过20个字）">
             <TextInput
               value={this.state.name}
               onDOMChange={e => this.setState({name: e.target.value})}
             />
           </FormField>
-          <FormField label="一句话描述">
+          <FormField label="一句话描述（不超过50个字）">
             <TextInput
               value={this.state.description}
               onDOMChange={e => this.setState({description: e.target.value})}
@@ -134,12 +134,12 @@ class Reviewers extends React.Component {
             <div align="right">
               <CheckBox
                 label="微信墙自动审核"
-                checked={this.props.activity && this.props.activity.autoOnScreen}
+                checked={this.props.activity.autoOnScreen}
                 onChange={this.toggleAutoOnScreen.bind(this)}
               />
               <CheckBox
                 label="弹幕自动审核"
-                checked={this.props.activity && this.props.activity.autoOnDanmaku}
+                checked={this.props.activity.autoOnDanmaku}
                 onChange={this.toggleAutoOnDanmaku.bind(this)}
               />
             </div>
@@ -180,9 +180,10 @@ class Reviewers extends React.Component {
 
 class ActivityAdmin extends React.Component {
   render () {
+    if (!this.props.activity) return <div></div>
     return (
       <div>
-        <HeaderBar title="活动名字"/>
+        <HeaderBar title={this.props.activity.name}/>
         <StatusBar {...this.props.activity}/>
         <ActivitySettings activity={this.props.activity}/>
         <Reviewers messages={this.props.messages} activity={this.props.activity}/>

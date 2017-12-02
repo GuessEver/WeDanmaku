@@ -4,10 +4,12 @@ import Activity from '../classes/activity'
 Message.extend({
   meteorMethods: {
     toggleOnScreen () {
+      if (!this.activity().isInProcess()) return
       this.onScreen = !this.onScreen
       return this.save()
     },
     toggleOnDanmaku () {
+      if (!this.activity().isInProcess()) return
       this.onDanmaku = !this.onDanmaku
       return this.save()
     }
@@ -34,7 +36,7 @@ HTTP.methods({
   '/api/activity/:_id/wechat': {
     post: function (data) {
       let activity = Activity.findOne(this.params._id)
-      if (activity) {
+      if (activity && activity.isInProcess()) {
         let xml = data.toString()
         let message = new Message()
         message.activityId = activity._id

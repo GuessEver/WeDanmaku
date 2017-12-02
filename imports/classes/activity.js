@@ -13,7 +13,7 @@ export default Class.create({
       type: String,
       validators: [
         { type: 'minLength', param: 2 },
-        { type: 'maxLength', param: 10 }
+        { type: 'maxLength', param: 20 }
       ]
     },
     description: {
@@ -21,7 +21,7 @@ export default Class.create({
       optional: true,
       validators: [
         { type: 'minLength', param: 2 },
-        { type: 'maxLength', param: 30 }
+        { type: 'maxLength', param: 50 }
       ]
     },
     startedAt: {
@@ -48,6 +48,15 @@ export default Class.create({
   helpers: {
     messages() {
       return Message.find({ activityId: this._id })
+    },
+    isStarted () {
+      return !!this.startedAt
+    },
+    isInProcess () {
+      return this.isStarted() && !this.isEnded()
+    },
+    isEnded () {
+      return !!this.endedAt
     }
   },
   behaviors: {
