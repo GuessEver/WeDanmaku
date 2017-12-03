@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
+import 'animate.css'
 import 'grommet/grommet.min.css'
 
 import { RedirectAs404 } from './Error'

@@ -14,7 +14,7 @@ import {
 export default class Auth extends React.Component {
   render () {
     return (
-      <div style={{minHeight: '1000px'}}>
+      <div>
         <Box justify="center" align="center" full="vertical">
           <Box colorIndex="light-2" pad="medium" align="center">
             <Heading>WeDanmaku</Heading>

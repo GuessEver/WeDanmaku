@@ -15,14 +15,25 @@ import {
   Button,
   Image,
   Table, TableRow,
-  CheckBox
+  CheckBox,
+  Anchor,
+  Icons
 } from 'grommet'
 
 const StatusBar = props => {
   if (!props.activity || !props.activity.isStarted()) {
     return <Notification message="活动还未开始" status="warning"/>
   } else if (props.activity.isInProcess()) {
-    return <Notification message="活动正在进行" status="ok"/>
+    const ExternalLinkIcon = Icons.Base.Share
+    return (
+      <Notification message="活动正在进行" status="ok" style={{position: 'relative'}}>
+        <Anchor
+          style={{position: 'absolute', right: '50px', top: 0, color: '#fff'}}
+          href={`/activity/${props.activity._id}`} target="_blank"
+          label="活动页面" icon={<ExternalLinkIcon/>}
+        />
+      </Notification>
+    )
   } else {
     return <Notification message="活动已经结束" status="critical"/>
   }
@@ -187,7 +198,6 @@ class MessageReviewer extends React.Component {
 
 class ActivityAdmin extends React.Component {
   render () {
-    if (!this.props.activity) return <div></div>
     return (
       <div>
         <HeaderBar title={this.props.activity.name}/>
@@ -202,13 +212,12 @@ class ActivityAdmin extends React.Component {
     )
   }
 }
-
 export default withTracker(props => {
   Meteor.subscribe('activity')
   Meteor.subscribe('message', props.match.params._id)
   let activity = Activity.findOne(props.match.params._id)
   return {
-    activity: activity,
+    activity: activity || new Activity(),
     messages: activity ? activity.messages({sort:{sendedAt: -1}}).fetch() : []
   }
 })(ActivityAdmin)

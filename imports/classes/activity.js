@@ -42,7 +42,7 @@ export default Class.create({
     },
     autoOnDanmaku: {
       type: Boolean,
-      default: false
+      default: true
     }
   },
   helpers: {
