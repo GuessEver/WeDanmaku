@@ -1,5 +1,4 @@
 import Activity from '../classes/activity'
-import { HTTP } from 'meteor/cfs:http-methods'
 import uuid from 'uuid'
 
 Activity.extend({

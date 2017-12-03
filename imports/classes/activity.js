@@ -46,8 +46,8 @@ export default Class.create({
     }
   },
   helpers: {
-    messages() {
-      return Message.find({ activityId: this._id })
+    messages(options = {}) {
+      return Message.find({ activityId: this._id }, options)
     },
     isStarted () {
       return !!this.startedAt
