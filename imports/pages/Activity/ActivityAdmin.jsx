@@ -11,12 +11,11 @@ import {
   Notification,
   Heading,
   Tabs, Tab,
-  FormField, TextInput, DateTime,
+  FormField, TextInput,
   Button,
   Image,
   Table, TableRow,
-  CheckBox,
-  Timestamp
+  CheckBox
 } from 'grommet'
 
 const StatusBar = props => {
